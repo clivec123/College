@@ -1,0 +1,99 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Assessment
+{
+   public static void main(String [] args)
+     {  
+        Scanner keyboard = new Scanner(System.in);
+        Random number = new Random(); // needed to randomise a number between 1-30
+        
+        int choice; // range of numbers 1-30
+        int numberofguesses; 
+        String username; 
+        int guess; // users initial guess
+        int initialvalue = 15;// what user starts with
+        int valuechange = initialvalue; // will change amount of money user has
+        char Y;//to play again
+        char N;//to exit game
+        boolean win = false;
+        
+        
+       
+        
+        
+        
+       System.out.println("Please enter your name");
+       username = keyboard.nextLine();
+       
+       System.out.println( "Hello" + username + " lets play a guessing game");
+       System.out.println("How this works");
+       System.out.println("I will pick a number between 1- 30");
+       System.out.println("You will try your best to guess that number");
+       System.out.println("Depending on how many guesses it takes, you have a chnace to earn some money $$$");
+       System.out.println("Your beginning balance is" + initialvalue);
+       System.out.println("Now, LETS PLAY");
+       try {
+        Thread.sleep(500);
+       } catch (InterruptedException ex) {} // all used to give anticipation to user while waiting on answer from computer
+       System.out.println("LOADING LOADING LOADING");
+        try {
+        Thread.sleep(500);
+       } catch (InterruptedException ex) {} // all used to give anticipation to user while waiting on answer from computer
+       
+       
+       System.out.println("Guess a number between 1-30");
+       guess = keyboard.nextInt();
+       numberofguesses ++; // adding up number of guesses
+       valuechange = initialvalue - 5; 
+         
+      do{
+       choice = number.nextInt(29) + 1; // Picking random number 1-30
+       for(int pause =1; pause <=3; pause++)
+       {
+         System.out.println(" * * * Computer Thinking * * *");
+       try {
+        Thread.sleep(500);
+       } catch (InterruptedException ex) {} // all used to give anticipation to user while waiting on answer from coomputer
+        }   
+       
+       
+        while ( guess != choice)
+       { 
+           if ( guess < choice)
+           {
+               System.out.println("Guess" + numberofguesses + "" + guess + "Number to low");// if number to low
+           }
+               else  if( guess > choice)
+           {
+               System.out.println("Guess" + numberofguesses + "" + guess +"Number to high");// if number to high
+           }
+       }
+        
+        if ( numberofguesses == 1) System.out.println(" You won £50 "); 
+        else if(numberofguesses == 2) System.out.println("You won £40");
+        else if(numberofguesses == 3) System.out.println("You won £30");
+        else if(numberofguesses == 4) System.out.println("You won £20");
+        else if(numberofguesses == 5) System.out.println("You won £10");
+        
+        if (valuechange < 5)// checks wheter user has enough to keep playing
+        { 
+            System.out.println("Insufficient funds game over");
+            System.out.println("Thanks for playing" + username + numberofguesses + valuechange);
+        }
+        else // Ask user to press y or n 
+        {  
+            System.out.println("Press Y to continue ");
+            char input = keyboard.nextln();
+        
+         if (choice.equalsIgnoreCase("N"))// ignores difference between uppercase or lowercase 
+        {
+             exit = true;
+        }
+        }while(exit == false);
+        
+       
+    }
+}
+    
+  
+     
